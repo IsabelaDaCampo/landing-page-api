@@ -1,0 +1,56 @@
+# Two diferent query
+query GET_AUTHORS {
+  authors {
+    name
+    role
+    description
+  }
+}
+
+query GET_LANDING_PAGE {
+  landingPage {
+    logo {
+      alternativeText
+      url
+    }
+  }
+}
+
+# One query
+query GET_AUTHORS {
+  authors {
+    name
+    role
+    description
+  }
+  landingPage {
+    logo {
+      alternativeText
+      url
+    }
+  }
+}
+
+# hard code - código de busca fixo
+{
+	author (id: 4) {
+    id
+    name
+    role
+    description
+  }
+}
+
+# passando variaveis
+query GET_AUTHOR($id: ID!){
+	author (id: $id) {
+    id
+    name
+    role
+    description
+  }
+}
+-> query variables
+{
+    "id": 4
+}
