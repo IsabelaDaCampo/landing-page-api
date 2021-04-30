@@ -1,4 +1,4 @@
-# hard code without fragments
+# hard coded without fragments
 query GET_LANDING_PAGE {
   landingPage {
     logo {

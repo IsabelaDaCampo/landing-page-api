@@ -1,0 +1,68 @@
+# update no author e dado já atualizado - mutation não parametrizada (hard coded)
+
+mutation UPDATE_AUTHOR {
+  updateAuthor(
+    input: {
+      where: { id: 4 }
+      data: { name: "Willian Justen de Vasconcellos" }
+    }
+  ) {
+    author {
+      id
+      name
+      role
+    }
+  }
+}
+
+mutation CREATE_AUTHOR {
+  createAuthor(
+    input: {
+      data: {
+        name: "Novo Instrutor"
+        role: "Instrutor"
+        description: "blablabla"
+      }
+    }
+  ) {
+    author {
+      id
+      name
+      role
+    }
+  }
+}
+
+# mutation parametrizada
+mutation UPDATE_AUTHOR($id: ID!, $data: editAuthorInput) {
+  updateAuthor(
+    input: {
+      where: { id: $id }
+      data: $data
+    }
+  ) {
+    author {
+      id
+      name
+      role
+    }
+  }
+}
+-> query variables
+{
+  "id": 4,
+  "data": {
+    "name":"Willian Justen de Vasconcellos"
+  }
+}
+
+
+# delete mutation
+
+mutation CREATE_AUTHOR {
+  deleteAuthor(input: { where: { id: 9 } }) {
+    author {
+      id
+    }
+  }
+}

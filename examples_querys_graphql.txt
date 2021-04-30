@@ -31,7 +31,7 @@ query GET_AUTHORS {
   }
 }
 
-# hard code - código de busca fixo
+# hard coded - código de busca fixo
 {
 	author (id: 4) {
     id
