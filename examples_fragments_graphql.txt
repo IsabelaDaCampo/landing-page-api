@@ -1,0 +1,55 @@
+# hard code without fragments
+query GET_LANDING_PAGE {
+  landingPage {
+    logo {
+      alternativeText
+      url
+    }
+
+    header {
+      title
+      description
+      button {
+        label
+        url
+      }
+      image {
+        alternativeText
+        url
+      }
+    }
+  }
+}
+
+# code with fragment (reaproveita o que tem igual na query)
+fragment imageData on UploadFile {
+  alternativeText
+  url
+}
+
+fragment logo on LandingPage {
+  logo {
+    ...imageData
+  }
+}
+
+fragment header on LandingPage {
+  header {
+    title
+    description
+    button {
+      label
+      url
+    }
+    image {
+      ...imageData
+    }
+  }
+}
+
+query GET_LANDING_PAGE {
+  landingPage {
+    ...logo
+    ...header
+  }
+}
