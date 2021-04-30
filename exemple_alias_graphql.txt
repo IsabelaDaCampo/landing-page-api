@@ -1,0 +1,34 @@
+#como renomear tags com graphQL
+
+fragment imageData on UploadFile {
+  alternativeText
+  url
+}
+
+fragment logo on LandingPage {
+  logo {
+    ...imageData
+  }
+}
+
+fragment header on LandingPage {
+  header {
+    title
+    description
+    button {
+      label
+      url
+    }
+    image {
+      ...imageData
+    }
+  }
+}
+
+query GET_LANDING_PAGE {
+  landingPage {
+    createAt: created_at
+    ...logo
+    ...header
+  }
+}
